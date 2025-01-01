@@ -16,7 +16,9 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Could not connect to MongoDB', err));
-
+app.get('/',(req,res)=>{
+   res.json({message:"Hi we are listening"});
+})
 app.use('/api/auth', authRoutes);
 app.use('/api/articles', articleRoutes);
 app.use('/api/payout', payoutRoutes);
